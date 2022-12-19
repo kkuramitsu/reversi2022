@@ -11,6 +11,17 @@ except:
 
 import math
 
+def draw_stone(ctx, x, y, color, D):
+    R = D//2
+    ctx.beginPath()
+    ctx.arc(x*D+R, y*D+R, R, 0, 2 * math.pi)
+    if color == 1:
+        ctx.fillStyle = "white"
+    else:
+        ctx.fillStyle = "black"
+    ctx.fill()
+
+
 def draw_board(canvas, board):
     ctx = canvas.getContext("2d")
     WIDTH=400 # 横
@@ -27,7 +38,7 @@ def draw_board(canvas, board):
                 ctx.fillStyle = "green"
             ctx.fillRect(x*D, y*D, D, D)
             if board.b[y,x] != 0:
-                draw_stone(ctx, x, y, board.b[y,x])
+                draw_stone(ctx, x, y, board.b[y,x], D)
                 if board.b[y,x] == 1:
                     white+=1
                 else:
