@@ -1,7 +1,6 @@
 import os
 from .reversi import *
 
-!pip install -q kogi
 try:
   import kogi
   from kogi.canvas import Canvas
