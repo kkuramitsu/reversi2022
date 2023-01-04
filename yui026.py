@@ -7,6 +7,7 @@ class yui026AI(object):
         return 'yui026'
 
     def play(self, board, color):
+        import random
         #評価表 四隅=5, 中央壁際=4, 中央=3, 角手前上下=2, 角手前斜め=1
         hyouka = [
         [5, 2, 4, 4, 2, 5],
