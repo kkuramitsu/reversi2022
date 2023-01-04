@@ -2,13 +2,12 @@
 #同じポイントの場合、序盤・中盤(空きマス11より多いとき)は相手の石を取る数を最も少ないところに置く(あまりとらない方がいいと聞いたので)。
 #終盤(空きマス11以下)は最もたくさん取れるところに置く。
 
-import random
-
 class yui026AI(object):
     def name(self):
         return 'yui026'
 
     def play(self, board, color):
+        import random
         #評価表 四隅=5, 中央壁際=4, 中央=3, 角手前上下=2, 角手前斜め=1
         hyouka = [
         [5, 2, 4, 4, 2, 5],
