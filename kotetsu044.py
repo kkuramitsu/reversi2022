@@ -26,6 +26,7 @@ class kotetsuAI(GameAI):
         for i in range(0,board.N+1):
           for j in range(0,board.N+1):
             if board.put_and_reverse(i, j, color, reverse=False) > 0:
-              A.append([put_and_reverse(self,i,j,color),i,j])
+              # A.append([put_and_reverse(self,i,j,color),i,j]) を A.append([board.put_and_reverse(i,j,color),i,j]) に変更
+              A.append([board.put_and_reverse(i,j,color),i,j])
               A.sort()
               return (A[0][1],A[0][2])
