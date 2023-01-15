@@ -1,9 +1,8 @@
-#1番取れるところ
 import random
 
-class AI28(object):
+class AI24(object):
     def name(self):
-        return 'AI2'
+        return 'AI24'
 
     def play(self, board, color):
       X=[]
@@ -11,6 +10,7 @@ class AI28(object):
       M=[]
       max=0
       min=1000000000
+      ok=0
       if board.put_and_reverse(0, 0, color, reverse=False) > 0:
         X.append(0)
         Y.append(0)
@@ -24,17 +24,24 @@ class AI28(object):
         X.append(0)
         Y.append(5)
       else:
-          for y in range(board.N):
-            for x in range(board.N):
-              if board.put_and_reverse(x, y, color, reverse=False) > 0:
-                if max< board.put_and_reverse(x, y, color, reverse=False):
-                  max= board.put_and_reverse(x, y, color, reverse=False)
-                  X.append(x)
-                  Y.append(y)
+        for y in range(board.N):
+          for x in range(board.N):
+            if (x==1 and y==1) or (x==1 and y==4) or (x==4 and y==1) or (x==4 and y==4):
+              pass
+            elif board.put_and_reverse(x, y, color, reverse=False) > 0:
+              if max< board.put_and_reverse(x, y, color, reverse=False):
+                max= board.put_and_reverse(x, y, color, reverse=False)
+                X.append(x)
+                Y.append(y)
+                ok+=1
+        if ok==0:
+          M=[1,4]
+          N=[1,4]
+          for i in range(2):
+            for j in range(2):
+              if board.put_and_reverse(M[i], N[j], color, reverse=False) > 0:
+                if max< board.put_and_reverse(M[i], N[j], color, reverse=False):
+                  max= board.put_and_reverse(M[i], N[j], color, reverse=False)
+                  X.append(M[i])
+                  Y.append(N[j])
       return (X[len(X)-1], Y[len(Y)-1])
-
-
-
-blackAI = AI28()
-whiteAI = RandomAI2()
-game(blackAI, whiteAI)
