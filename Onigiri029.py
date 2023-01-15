@@ -1,3 +1,5 @@
+import numpy as np
+
 class OnigiriAI(object):
     def name(self):
         return 'Onigiri029'
@@ -27,6 +29,6 @@ class OnigiriAI(object):
                 selection.append(can_set_pos[i])
         
         # AIが選んだ石を置く位置を代入
-        x, y = selection[random.randint(0, len(selection))]
+        x, y = selection[np.random.randint(0, len(selection))]
 
         return x, y
