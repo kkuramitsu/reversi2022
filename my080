@@ -1,0 +1,29 @@
+#評価表＋貪欲
+import numpy as np
+
+class MyAI(object):
+    def name(self):
+        return 'myAI'
+
+    def play(self, board, color):
+        stones = [] 
+        value = []
+        place = []
+        ans = []
+        S = [[10, 5, 5, 5, 5, 10],
+            [5, 1, 2, 2, 1, 5],
+            [5, 2, 0, 0, 2, 5],
+            [5, 2, 0, 0, 2, 5],
+            [5, 1, 2, 2, 1, 5],
+            [10, 5, 5, 5, 5, 10]]
+        for y in range(board.N):
+          for x in range(board.N):
+            if board.put_and_reverse(x, y, color, reverse=False) > 0:
+              value.append(S[y][x])
+              stones.append(board.put_and_reverse(x, y, color, reverse=False))
+              place.append((x, y))
+        for i in range(len(value)):
+          ans.append(value[i] + stones[i])
+        ansmax = max(ans)
+        finalAnswer = ans.index(ansmax)
+        return place[finalAnswer]
