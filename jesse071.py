@@ -1,6 +1,6 @@
 from reversi2022.jesse071 import *
 import random
-class AI(GameAI):
+class jesse071AI(object):
     def name(self):
         return 'jesse071'
 
