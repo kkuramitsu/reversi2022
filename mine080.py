@@ -3,7 +3,7 @@ import random
 
 class AI(GameAI):
     def name(self):
-        return 'hiyoko089'
+        return 'mineAI'
 
     def play(self, board, color):
         while True:

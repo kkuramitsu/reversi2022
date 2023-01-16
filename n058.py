@@ -1,10 +1,7 @@
-from reversi2022.reversi import *
-import random
 
-class AI(GameAI):
+class AI(object):
     def name(self):
-        return 'hiyoko089'
-
+        return '22016058'
     def play(self, board, color):
         while True:
             x = random.randint(0, board.N+1)
