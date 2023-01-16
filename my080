@@ -1,6 +1,4 @@
 #評価表＋貪欲
-import numpy as np
-
 class MyAI(object):
     def name(self):
         return 'myAI'
