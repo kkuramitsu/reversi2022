@@ -53,6 +53,7 @@ def draw_board(canvas, board):
 def game2(blackAI, whiteAI, fps=10):
     canvas = Canvas(fps=fps)
     board = Board()
+    print(f'黒 {blackAI.name()} 白 {whiteAI.name()}')
     draw_board(canvas, board)
     while board.can_put(BLACK) or board.can_put(WHITE):
         if board.can_put(BLACK):
@@ -70,4 +71,3 @@ def game2(blackAI, whiteAI, fps=10):
                 return
             draw_board(canvas, board)
     display(canvas)
-    return canvas
