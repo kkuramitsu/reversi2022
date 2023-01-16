@@ -1,13 +1,31 @@
-from reversi2022.reversi import *
 import random
+from reversi2022.reversi import *
 
-class AI(object):
-    def name(self):
+class komugiAI(object):
+  def name(self):
         return 'komugi077'
-
-    def play(self, board, color):
-      while True:
+        
+  def play(self, board, color):
+    board = [
+        [ 50, -20,  10,  10, -20,   50],
+        [-20, -30, -10, -10, -30,  -20],
+        [ 10, -10,   5,   5, -10,   10],
+        [ 10, -10,   5,   5, -10,   10],
+        [-20, -30, -10, -10, -30,  -20],
+        [ 50, -20,  10,  10, -20,   50],
+    ]
+    
+    s=[]
+    t=[]
+    
+    while True:
         x = random.randint(0, board.N+1)
         y = random.randint(0, board.N+1)
-        if board.put_and_reverse(x, y, color, reverse=False) > 0:
-            return (x, y)
+        for y in range(board.N):
+          for x in range(board.N):
+            if board.put_and_reverse(x, y, color, reverse=False) > 0:
+              s.append(list[x][y])
+              t.append((x, y))
+              i = max(s)
+              j = s.index(i)
+              return t[j]
