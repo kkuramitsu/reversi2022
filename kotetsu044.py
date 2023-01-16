@@ -1,6 +1,6 @@
 #貪欲AI
 import random
-class kotetsuAI(GameAI):
+class kotetsuAI(object):
   def name(self):
     return 'kotetsu044'
 
