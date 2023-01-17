@@ -1,14 +1,34 @@
-from reversi2022.reversi import *
-import random
-
-class AI(object):
-    def name(self):
-        return 'Ito013'
+import numpy as np
 
 
-    def play(self, board, color):
-        while True:
-          x = random.randint(0, board.N+1)
-          y = random.randint(0, board.N+1)
-          if board.put_and_reverse(x, y, color, reverse=False) > 0:
-                    return (x, y)
+class OseroAI(object):
+
+  def name(self):
+    return 'Ito013'
+
+  def play(self, board, color):
+
+    pos_list = []
+    gain_list = []
+    index_list = []
+
+    for y in range(board.N):
+        for x in range(board.N):
+            num = board.put_and_reverse(x, y, color, reverse=False) 
+            if num > 0:
+                pos_list.append((x, y))
+                gain_list.append(num)
+    return pos_list, gain_list
+
+    if len(pos_list) == 0:
+        return []
+     
+    max_gain = max(gain_list)
+    for i, val in enumerate(gain_list):
+        if max_gain == val:
+            index_list.append(i)
+
+        
+    x, y = index_list[np.random.randint(0, len(index_list))]
+        
+    return (x, y)
