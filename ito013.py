@@ -4,7 +4,7 @@ import numpy as np
 class OseroAI(object):
 
   def name(self):
-    return 'Ito013'
+    return 'ito013'
 
   def play(self, board, color):
 
