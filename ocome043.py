@@ -13,5 +13,6 @@ class ocomeAI(object):
         if quantity > 0:
           posi.append((x,y))
           qua.append(quantity)
-    q_max = qua[max(qua)]
-    return (posi[q_max])
+    q_max = max(qua)
+    q_index = qua.index(q_max)
+    return (posi[q_index])
