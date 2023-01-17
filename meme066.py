@@ -1,3 +1,5 @@
+#提出用ゲーム木
+
 # 定数
 SIZE = 14           # 盤面の大きさ
 FIRST_KALAH = 6     # 先手、先手のカラハの位置
@@ -21,28 +23,27 @@ class Board:
         return Board(self.board)
     
         def distribute(self, turn, pos):
-        num = self.board[pos]
-        self.board[pos] = 0
-        while num > 0:
-            pos += 1
-            if pos == SIZE: pos = 0
-            if (turn == FIRST_KALAH and pos == SECOND_KALAH) or \
-               (turn == SECOND_KALAH and pos == FIRST_KALAH): continue
-            self.board[pos] += 1
-            num -= 1
-        return pos
+          num = self.board[pos]
+          self.board[pos] = 0
+          while num > 0:
+              pos += 1
+              if pos == SIZE: pos = 0
+              if (turn == FIRST_KALAH and pos == SECOND_KALAH) or \
+                 (turn == SECOND_KALAH and pos == FIRST_KALAH): continue
+              self.board[pos] += 1
+              num -= 1
+          return pos
     
-       def check_capture(self, turn, pos):
-        if (turn == FIRST_KALAH and 0 <= pos <= 5) or \
-           (turn == SECOND_KALAH and 7 <= pos <= 12):
+    def check_capture(self, turn, pos):
+      if(turn == FIRST_KALAH and 0<=pos<=5) or (turn == SECOND_KALAH and 7<=pos<=12):
             if self.board[pos] == 1 and self.board[12 - pos] > 0:
                 # 両取りができる
                 num = self.board[12 - pos] + 1
                 self.board[turn] += num
                 self.board[pos] = 0
                 self.board[12 - pos] = 0
-                return True
-        return False
+            return True
+      return False
     
         # 穴にある石を数える
     def count_stone(self, turn):
@@ -71,10 +72,10 @@ class Board:
             return True
         return False
     
-        def move_stone(self, turn, pos):
+    def move_stone(self, turn, pos):
         pos = self.distribute(turn, pos)
         if pos == turn: return KALAH
-        self.check_capture(turn, pos)
+            self.check_capture(turn, pos)
         return NORMAL
     
     # 定数
