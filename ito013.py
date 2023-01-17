@@ -1,3 +1,4 @@
+from reversi2022.reversi import *
 import numpy as np
 
 
