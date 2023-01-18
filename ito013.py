@@ -19,15 +19,16 @@ class OseroAI(object):
                 pos_list.append((x, y))
                 gain_list.append(num)
 
-    if len(pos_list) == 0:
-        return []
-     
     max_gain = max(gain_list)
     for i, val in enumerate(gain_list):
-        if max_gain == val:
-            index_list.append(i)
+            if max_gain == val:
+                index_list.append(i)
+    
+    tgt = random.randint(0, len(index_list)-1)
 
-        
-    tgt = np.random.randint(0, len(index_list)-1)
+
     x, y = pos_list[index_list[tgt]]
-    return (x, y)
+
+
+    return x, y
+  
