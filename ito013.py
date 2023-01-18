@@ -1,4 +1,3 @@
-from reversi2022.reversi import *
 import numpy as np
 
 
@@ -30,6 +29,6 @@ class OseroAI(object):
             index_list.append(i)
 
         
-    x, y = index_list[np.random.randint(0, len(index_list))]
-        
+    tgt = random.randint(0, len(index_list)-1)
+    x, y = pos_list[index_list[tgt]]
     return (x, y)
