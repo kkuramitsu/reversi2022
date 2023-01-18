@@ -1,3 +1,5 @@
+import numpy as np
+
 class OnigiriAI(object):
     # 評価表を設定(とりあえず6x6に対応)
     board_eval = [
@@ -43,5 +45,5 @@ class OnigiriAI(object):
                 final_selection.append(selection[i])
 
 
-        x, y = final_selection[random.randint(0, len(final_selection))]
+        x, y = final_selection[np.random.randint(0, len(final_selection))]
         return x, y
