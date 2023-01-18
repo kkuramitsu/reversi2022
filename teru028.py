@@ -15,12 +15,12 @@ def find_all(board, color):
 
 
 eval_matrix = np.array([
-    [120, 10, 10, 10, 10, 120],
-    [10, 10, 10, 10, 10, 10],
-    [10, 10, 10, 10, 10, 10],
-    [10, 10, 10, 10, 10, 10],
-    [10, 10, 10, 10, 10, 10],
-    [120, 10, 10, 10, 10, 120],
+    [120, 10, 20, 20, 10, 120],
+    [10, 5, 10, 10, 5, 10],
+    [20, 10, 30, 30, 10, 20],
+    [20, 10, 30, 30, 10, 20],
+    [10, 5, 10, 10, 5, 10],
+    [120, 10, 20, 20, 10, 120],
 ])
 
 
@@ -66,10 +66,10 @@ class TeruAI(object):
             nb = board.copy()
             nb.put_and_reverse(x, y, color)
             place_a(nb, -color)
-            s = deep_score(board, color, 2)
+            s = deep_score(board, color, 3)
             ss.append((s, x, y))
         ss.sort()
-        print(ss)
+        print('先読み', ss)
         _, x, y = ss[-1]
         return x, y
 
