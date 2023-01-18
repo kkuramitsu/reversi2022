@@ -62,14 +62,14 @@ class Board:
     # 終了チェック
     def check_gameover(self):
         if self.count_stone(FIRST_KALAH) == 0:
-            self.put_stone_into_kalah(SECOND_KALAH)
-            return True
+           self.put_stone_into_kalah(SECOND_KALAH)
+           return True
         elif self.count_stone(SECOND_KALAH) == 0:
             self.put_stone_into_kalah(FIRST_KALAH)
             return True
         elif self.board[FIRST_KALAH] > EVEN or \
              self.board[SECOND_KALAH] > EVEN:
-            return True
+             return True
         return False
     
     def move_stone(self, turn, pos):
