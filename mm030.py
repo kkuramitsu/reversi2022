@@ -1,7 +1,7 @@
 from reversi2022.reversi import*
 import random
 
-class mmAI(object):
+class AI(object):
     def name(self):
         return 'mm030'
 
