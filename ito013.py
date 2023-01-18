@@ -29,6 +29,6 @@ class OseroAI(object):
             index_list.append(i)
 
         
-    tgt = random.randint(0, len(index_list)-1)
+    tgt = np.random.randint(0, len(index_list)-1)
     x, y = pos_list[index_list[tgt]]
     return (x, y)
