@@ -1,13 +1,26 @@
 from reversi2022.reversi import *
 import random
+import numpy as np
 
-class AI(object):
+class ruriAI(object):
     def name(self):
-        return '025'
+        return 'ruri025'
 
     def play(self, board, color):
-      while True: 
-        x=random.randint(0,board.N+1)
-        y=random.randint(0,board.N+1)
-        if board.put_and_reverse(x,y,color,reverse=False)>0:
-          return (x,y)
+        can_set_pos = [] 
+        can_get_stones = []
+        selection = [] 
+
+        for y in range(board.N):
+            for x in range(board.N):
+                num = board.put_and_reverse(x, y, color, reverse=False) 
+                if num > 0:
+                    can_set_pos.append((x, y))
+                    can_get_stones.append(num)
+                    
+        for i in range(len(can_set_pos)):
+            if can_get_stones[i] == max(can_get_stones):
+                selection.append(can_set_pos[i])
+                
+        x, y = selection[np.random.randint(0, len(selection))]
+        return x, y
