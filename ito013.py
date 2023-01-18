@@ -14,10 +14,10 @@ class OseroAI(object):
 
     for y in range(board.N):
         for x in range(board.N):
-            num = board.put_and_reverse(x, y, color, reverse=False) 
-            if num > 0:
+            gain = board.put_and_reverse(x, y, color, reverse=False)
+            if gain > 0:
                 pos_list.append((x, y))
-                gain_list.append(num)
+                gain_list.append(gain)
 
     max_gain = max(gain_list)
     for i, val in enumerate(gain_list):
