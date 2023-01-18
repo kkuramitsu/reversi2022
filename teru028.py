@@ -15,17 +15,17 @@ def find_all(board, color):
 
 
 eval_matrix = np.array([
-    [120, 10, 20, 20, 10, 120],
+    [120, 10, 20, 20, 50, 120],
     [10, 5, 10, 10, 5, 10],
-    [20, 10, 30, 30, 10, 20],
-    [20, 10, 30, 30, 10, 20],
+    [20, 10, 15, 15, 10, 20],
+    [20, 10, 15, 15, 10, 20],
     [10, 5, 10, 10, 5, 10],
     [120, 10, 20, 20, 10, 120],
 ])
 
 
 def score(board, color):
-    return (board.b * eval_matrix * color).sum()
+    return (board.b * eval_matrix).sum()*color
 
 
 def place_a(board, color):
@@ -39,7 +39,7 @@ def place_a(board, color):
         s = score(nb, color)
         ss.append((s, x, y))
     ss.sort()
-    _, x, y = ss[0]
+    _, x, y = ss[-1]
     board.put_and_reverse(x, y, color)
 
 
@@ -53,6 +53,7 @@ def deep_score(board, color, depth=3):
         place_a(nb, -color)
         s = deep_score(board, color, depth-1)
         ss.append(s)
+    print(ss)
     return max(ss)
 
 
@@ -75,6 +76,6 @@ class TeruAI(object):
 
 
 if __name__ == '__main__':
-    blackAI = Greed_and_TableAI()
+    blackAI = OChibiAI()
     whiteAI = TeruAI()
     game(blackAI, whiteAI)
