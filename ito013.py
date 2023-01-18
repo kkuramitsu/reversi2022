@@ -18,7 +18,6 @@ class OseroAI(object):
             if num > 0:
                 pos_list.append((x, y))
                 gain_list.append(num)
-    return pos_list, gain_list
 
     if len(pos_list) == 0:
         return []
