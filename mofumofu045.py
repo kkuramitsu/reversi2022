@@ -6,12 +6,12 @@ class mofuAI(object):
         return 'mofumofu045'
 
     def play(self, board, color):
-      list = [30,-5,10,10,-5,30
-               -5,0,5,5,0,-5,
-                10,5,0,0,5,10,
-                10,5,0,0,5,10,
-               -5,0,5,5,0,-5,
-                30,5,10,10,-5,30]
+      list = [[30,-5,10,10,-5,30],
+              [-5,0,5,5,0,-5],
+              [10,5,0,0,5,10],
+              [10,5,0,0,5,10],
+              [-5,0,5,5,0,-5],
+              [30,5,10,10,-5,30]]
 
       w = []
       p = []
@@ -20,7 +20,7 @@ class mofuAI(object):
           for x in range(board.N):
             if board.put_and_reverse(x, y, color, reverse = False) > 0:
               w.append([list[y][x]])
-              p.append([x,y])
+              p.append((x,y))
       a = w.index(max(w))
                
       return p[a]
