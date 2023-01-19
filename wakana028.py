@@ -27,23 +27,23 @@ class wakana028AI(GameAI):
       ]
 
       for y in range(board.N):
-            for x in range(board.N):
-                if board.put_and_reverse(x, y, color, reverse=False) > 0: 
-                    put_list.append((x, y))
-                    get_list.append(board.put_and_reverse(x, y, color, reverse=False))
-                    point_list.append(rank[x][y])
+          for x in range(board.N):
+              if board.put_and_reverse(x, y, color, reverse=False) > 0: 
+                  put_list.append((x, y))
+                  get_list.append(board.put_and_reverse(x, y, color, reverse=False))
+                  point_list.append(rank[x][y])
 
 
       #最大数
       for i in range(len(put_list)):
           if get_list[i] == max(get_list):
-              max_list.append(put_list[i])#位置
-              maxget_list.append(O[i])#重み
+                max_list.append(put_list[i])#位置
+                maxget_list.append(O[i])#重み
 
         #最大数の時に、最重量
       for i in range(len(max_list)):
           if maxget_list[i] == max(maxget_list):
-              max_list2.append(max_list[i])
+                max_list2.append(max_list[i])
         
 
       x, y = max_list2[np.random.randint(0, len(max_list2))]
