@@ -1,4 +1,4 @@
-import random
+import numpy as np
 class peaceAI(object):
     def name(self):
         return 'peace059'
@@ -19,6 +19,6 @@ class peaceAI(object):
             if can_get_stones[i] == max(can_get_stones):
                 selection.append(can_set_pos[i])
 
-      x, y = selection[random.randint(0, len(selection))]
+      x, y = selection[np.random.randint(0, len(selection))]
 
       return x, y
