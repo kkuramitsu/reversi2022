@@ -1,15 +1,12 @@
-import random
-
-class AI24(object):
+class A24I(object):
     def name(self):
-        return 'AI24'
+        return 'A24I'
 
     def play(self, board, color):
       X=[]
       Y=[]
       M=[]
       max=0
-      min=1000000000
       ok=0
       if board.put_and_reverse(0, 0, color, reverse=False) > 0:
         X.append(0)
