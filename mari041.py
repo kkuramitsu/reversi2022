@@ -1,8 +1,8 @@
 import numpy as np
 
-class OnigiriAI(object):
+class mariAI(object):
     def name(self):
-        return 'Mari041'
+        return 'mari041'
 
     def play(self, board, color):
         can_set_pos = [] 
