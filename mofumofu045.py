@@ -19,7 +19,7 @@ class mofuAI(object):
       for y in range(board.N):
           for x in range(board.N):
             if board.put_and_reverse(x, y, color, reverse = False) > 0:
-              w.append([board_num[x][y]])
+              w.append([list[y][x]])
               p.append([x,y])
       a = w.index(max(w))
                
