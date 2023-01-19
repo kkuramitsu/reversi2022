@@ -1,4 +1,5 @@
 class peaceAI(object):
+    import random
     def name(self):
         return 'peace059'
 
