@@ -1,6 +1,6 @@
 #重さAI
 import random
-class kotetsuAI_2(object):
+class kotetsuAI(object):
   k = [
       [-62,-33,-7,-7,-33,-62],
       [-33,26,8,8,26,-33],
