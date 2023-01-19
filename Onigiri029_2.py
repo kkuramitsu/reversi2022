@@ -1,5 +1,5 @@
+import numpy as np
 import random
-
 
 class OnigiriAI(object):
     # 評価表を設定(とりあえず6x6に対応)
@@ -44,6 +44,5 @@ class OnigiriAI(object):
         for i in range(len(selection)):
             if pos_evals[i] == max(pos_evals):
                 final_selection.append(selection[i])
-
         x, y = final_selection[random.randint(0, len(final_selection))]
         return x, y
