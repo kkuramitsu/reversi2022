@@ -36,8 +36,8 @@ class wakana028AI(GameAI):
       #最大数
       for i in range(len(put_list)):
           if get_list[i] == max(get_list):
-              max_list.append(put_list[i])#位置
-              maxget_list.append(O[i])#重み
+             max_list.append(put_list[i])#位置
+             maxget_list.append(O[i])#重み
 
         #最大数の時に、最重量
       for i in range(len(max_list)):
