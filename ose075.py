@@ -1,13 +1,26 @@
 from reversi2022.reversi import *
 import random
 
-class AI(GameAI):
+class oseAI(object):
     def name(self):
         return 'ose075'
-
+        
     def play(self, board, color):
-        while True:
-            x = random.randint(0, board.N+1)
-            y = random.randint(0, board.N+1)
+        #評価表
+        tablesc= [[150, -10, 20, 20, -10, 150],
+                 [-10, -40, 3, 3, -40, -10],
+                 [20, 3, 3, 3, 3, 50],
+                 [20, 3, 3, 3, 3, 50],
+                 [-10, -40, 3, 3, -40, -10],
+                 [150, -10, 20, 20, -10, 150]]        
+        v=[] #重み
+        p=[] #おける場所
+
+        for y in range(board.N):
+          for x in range(board.N):
             if board.put_and_reverse(x, y, color, reverse=False) > 0:
-                return (x, y)
+              v.append(tablesc[y][x])
+              p.append((x,y))
+
+        ans = v.index(max(v))
+        return p[ans]

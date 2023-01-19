@@ -2,6 +2,7 @@
 # オセロ（リバーシ）
 #
 
+import time
 from collections import Counter
 import numpy as np
 
@@ -43,7 +44,7 @@ class Board(object):
     def __repr__(self):
         return repr(self.b)
 
-    def show(self):
+    def show(self, black='', white=''):
         counter = Counter()
         for y in range(self.N):
             for x in range(self.N):
@@ -53,6 +54,10 @@ class Board(object):
             print()
         print(counter.most_common())
         print()
+
+    def count(self):
+        b = self.b.flatten()
+        return abs(b[b == BLACK].sum()), b[b == WHITE].sum()
 
     def on(self, x, y):
         return 0 <= x < self.N and 0 <= y < self.N
@@ -122,24 +127,68 @@ class OchibiAI(object):
                     return (x, y)
 
 
-def game(blackAI, whiteAI):
+def game(blackAI, whiteAI, verbose=True):
     board = Board()
-    board.show()
+    if verbose:
+        board.show()
+    bts, wts = [], []
     while board.can_put(BLACK) or board.can_put(WHITE):
         if board.can_put(BLACK):
+            start = time.time()
             x, y = blackAI.play(board.copy(), BLACK)
+            bts.append(time.time()-start)
             c = board.put_and_reverse(x, y, BLACK)
             if c == 0:
                 print(f'{blackAI.name()}は({x},{y})に置こうとした. 反則負け')
-                return
-            board.show()
+                return 0, 36
+            if verbose:
+                board.show()
         if board.can_put(WHITE):
+            start = time.time()
             x, y = whiteAI.play(board.copy(), WHITE)
+            wts.append(time.time()-start)
             c = board.put_and_reverse(x, y, WHITE)
             if c == 0:
                 print(f'{whiteAI.name()}は({x},{y})に置こうとした. 反則負け')
-                return
-            board.show()
+                return 36, 0
+            if verbose:
+                board.show()
+    bs, ws = board.count()
+    return bs, ws, sum(bts), sum(wts)
+
+
+def stat(b, w, bs, ws):
+    return bs+b, ws+w
+
+
+def judge(b, w, bwin, bdraw):
+    if b > w:
+        bwin += 1
+    elif b == w:
+        bdraw += 0
+    return bwin, bdraw
+
+
+def game10(blackAI, whiteAI=OchibiAI(), N=5):
+    bs, ws = 0, 0
+    bt, wt = 0, 0
+    bwin, bdraw = 0, 0
+    for _ in range(N):
+        b, w, b2, w2 = game(blackAI, whiteAI, verbose=False)
+        bs, ws = stat(b, w, bs, ws)
+        bt, wt = stat(b2, w2, bt, wt)
+        bwin, bdraw = judge(b, w, bwin, bdraw)
+        print(STONE[0], blackAI.name(), b, STONE[2], whiteAI.name(), w)
+        b, w, b2, w2 = game(whiteAI, blackAI, verbose=False)
+        print(STONE[0], whiteAI.name(), b, STONE[2], blackAI.name(), w)
+        bs, ws = stat(w, b, bs, ws)
+        bt, wt = stat(w2, b2, bt, wt)
+        bwin, bdraw = judge(w, b, bwin, bdraw)
+    wwin = N*2-bwin-bdraw
+    print(
+        f'\033[31m結果\033[0m: {blackAI.name()} {bwin}勝 {whiteAI.name()} {wwin}勝 引き分け {bdraw}')
+    print(f'思考時間: {blackAI.name()} {bt:.3f} {whiteAI.name()} {wt:.3f}')
+    print(f'得点: {blackAI.name()} {bs} {whiteAI.name()} {ws}')
 
 
 if __name__ == '__main__':
