@@ -1,13 +1,20 @@
-from reversi2022.reversi import *
-import random
-
-class AI(object):
+class yamaponAI(object):
   def name(self):
-    return 'Jesse088'
-    
+    return 'やまぽんAI'
+
   def play(self,board,color):
-    while True:
-      x = random.randint(0,board.N+1)
-      y = random.randint(0,board.N+1)
-      if board .put_and_reverse(x,y,color,reverse=False)>0:
-        return(x,y)
+      possible=[]
+      weight= [[100, -20, 20, 20, -20, 100],
+               [-20, -50, 10, 10, -50, -20],
+               [20, 10, 0, 0, 10, 20],
+               [20, 10, 0, 0, 10, 20],
+               [-20, -50, 10, 10, -50, -20],
+               [100, -20, 20, 20, -20, 100]]
+
+      for x in range(board.N):
+        for y in range(board.N):
+          if board.put_and_reverse(x, y, color, reverse=False) > 0: 
+            index=max(weight[x][y])
+            possible.append((x,y))
+
+      return possible[index]
