@@ -102,7 +102,7 @@ class PanAI(object):
                 ax, ay = x, y
                 continue
             ss.append((s-s0, x, y))
-        ss.sort()
+        ss.sort(reverse=True)
         # print(self.name(), ss)
         if len(ss) == 0:  # どこもおけなかったら四角を取らせる
             return ax, ay
@@ -148,7 +148,7 @@ class TeruAI(object):
             # ２手先まで読んで、得点の高いものを探す
             s = deep_score(board, color, TeruAI.MATRIX, s0, 2)
             ss.append((s - a, x, y))
-        ss.sort()
+        ss.sort(reverse=True)
         # print(f'\033[31m{self.name()}先読み: {ss}\033[0m')
         _, x, y = ss[0]
         return x, y
