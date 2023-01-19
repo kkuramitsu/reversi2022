@@ -1,6 +1,6 @@
 import numpy as np
 
-class wakana028AI(GameAI):
+class wakana028AI(object):
     def name(self):
         return 'wakana028'
 
