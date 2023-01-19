@@ -1,4 +1,3 @@
-import numpy as np
 import random
 
 class OnigiriAI(object):
@@ -13,7 +12,7 @@ class OnigiriAI(object):
     ]
 
     def name(self):
-        return 'Onigiri029 - ver2'
+        return 'おにぎりAI'
 
     # 自分が石を置ける場所を探索し、おきたい場所の座標を返す
     def play(self, board, color):
@@ -44,5 +43,5 @@ class OnigiriAI(object):
         for i in range(len(selection)):
             if pos_evals[i] == max(pos_evals):
                 final_selection.append(selection[i])
-        x, y = final_selection[random.randint(0, len(final_selection))]
+        x, y = final_selection[random.randrange(len(final_selection))]
         return x, y
