@@ -1,5 +1,4 @@
-from reversi2022.reversi import *
-import random
+import numpy as np
 
 class wakana028AI(GameAI):
     def name(self):
@@ -7,12 +6,12 @@ class wakana028AI(GameAI):
 
     def play(self, board, color):
 
-      put_list = [] #置く位置
-      get_list = [] #取得数
-      point_list = [] #重み
-      max_list = []
-      maxget_list = []
-      max_list2 = []
+        put_list = [] #置く位置
+        get_list = [] #取得数
+        point_list = [] #重み
+        max_list = []
+        maxget_list = []
+        max_list2 = []
 
 
       point = [
@@ -29,9 +28,9 @@ class wakana028AI(GameAI):
       for y in range(board.N):
             for x in range(board.N):
                 if board.put_and_reverse(x, y, color, reverse=False) > 0: 
-                    put_list.append((x, y))
-                    get_list.append(board.put_and_reverse(x, y, color, reverse=False))
-                    point_list.append(rank[x][y])
+                   put_list.append((x, y))
+                   get_list.append(board.put_and_reverse(x, y, color, reverse=False))
+                   point_list.append(rank[x][y])
 
 
       #最大数
@@ -43,7 +42,7 @@ class wakana028AI(GameAI):
         #最大数の時に、最重量
       for i in range(len(max_list)):
           if maxget_list[i] == max(maxget_list):
-              max_list2.append(max_list[i])
+             max_list2.append(max_list[i])
         
 
       x, y = max_list2[np.random.randint(0, len(max_list2))]
