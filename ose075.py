@@ -1,7 +1,7 @@
 from reversi2022.reversi import *
 import random
 
-class oseAI(object):
+class AI(object):
     def name(self):
         return 'ose075'
         
