@@ -13,7 +13,4 @@ class mmkAI(GameAI):
               for x in range(board.N):
                 if board.put_and_reverse(x, y, color, reverse=False) > 0:
                     return (x, y)
-blackAI = mmkAI()
-whiteAI = AI()
-game(blackAI, whiteAI)
 
