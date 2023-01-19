@@ -1,9 +1,8 @@
-
- from reversi2022.reversi import *
+from reversi2022.reversi import *
 import random
 
 
-class ganbaruAI(GameAI):
+class ganbaruAI(object):
     def name(self):
         return 'ganbaruAI'
 
