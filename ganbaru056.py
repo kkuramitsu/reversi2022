@@ -4,7 +4,7 @@ import random
 
 class ganbaruAI(object):
     def name(self):
-        return 'ganbaru'
+        return 'ganbaru056'
 
 BOARD = 8 
 
