@@ -1,4 +1,4 @@
-class Paru(GameAI):
+class Paru(object):
   def name(self):
     return 'Paru'
 
